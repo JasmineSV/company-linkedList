@@ -63,20 +63,31 @@ bool Company::AddEmployee(const Employee & employee) {
 }
 
 int Company::FindById(unsigned int id) {
-    int pos = 0;
-    Node* currNode = _head;//Set current Node as the first one "head"
-    while (currNode != nullptr){//while it doesnt reach the end -- is NULL?
-        pos++;
-        if(currNode->data->GetId() == id){
-            return pos;
-        }
-        currNode = currNode->next;//points to the next node in list
-    }
-    return -1;
+    Node* tmp = _head;
+
 }
 
 int Company::FindByName(const string & name, unsigned int position) {
-    return 0;
+    Node* tmp = _head;
+    int pos;
+    if(position <= _size && position > 0)
+    {
+        pos =1;
+        while (tmp != NULL && pos < position){
+            tmp = tmp->next;
+            pos++;
+        }
+        while (tmp != NULL){
+            if(tmp->data->GetName() == name){
+                return pos;
+            }
+            pos++;
+            tmp = tmp->next;
+        }
+
+    }
+    return -1;
+
 }
 
 int Company::Read(istream & input) {
