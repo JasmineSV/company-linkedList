@@ -40,7 +40,7 @@ bool Company::AddEmployee(unsigned int id, const string & name, double salary, u
         tmp->next = neo;
     }
     _size++;
-
+return true;// does this go here
 }
 
 bool Company::AddEmployee(const Employee & employee) {
@@ -60,38 +60,40 @@ bool Company::AddEmployee(const Employee & employee) {
         tmp->next = neo;
     }
     _size++;
+    return true;
 }
 
 int Company::FindById(unsigned int id) {
     if(_size == 0){
+
         return -1;
     }
     Node* curr = _head;
+    int pos = 0;
     while (curr->next != NULL){
         if(curr->data->GetId() == id){
-            return id;
+            return pos;
         }
-
         curr = curr->next;
+        pos++;
     }
+    return -1;
 }
 
 int Company::FindByName(const string & name, unsigned int position) {
-    Node* tmp = _head;
-    int pos;
-    if(position <= _size && position > 0)
-    {
-        pos =1;
-        while (tmp != NULL && pos < position){
-            tmp = tmp->next;
+    Node* curr = _head;
+    int pos = 0;
+    if(position <= _size){
+        while (curr != NULL && pos < position){
+            curr = curr->next;
             pos++;
         }
-        while (tmp != NULL){
-            if(tmp->data->GetName() == name){
+        while (curr != NULL){
+            if(curr->data->GetName() == name){
                 return pos;
             }
             pos++;
-            tmp = tmp->next;
+            curr = curr->next;
         }
 
     }
@@ -118,10 +120,13 @@ int Company::Read(istream & input) {
 }
 
 int Company::Write(ostream & output) {
+    int count;
     for (Node* tmp = _head; tmp != nullptr; tmp = tmp->next) {
         tmp->data->ToString();
         output << "\n";
+        count++;
     }
+    return count;
 }
 
 bool Company::IsFull(){

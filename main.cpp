@@ -65,7 +65,7 @@ int main() {
     );
     Employee* ptrEmployee;
 
-    unsigned int employeeIndex;
+    int employeeIndex;
     const int INBUFFER1_COUNT = 9;
     assert(company->Read(inbuffer1) == INBUFFER1_COUNT);
     assert(!company->IsFull());
