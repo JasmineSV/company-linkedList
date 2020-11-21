@@ -63,8 +63,17 @@ bool Company::AddEmployee(const Employee & employee) {
 }
 
 int Company::FindById(unsigned int id) {
-    Node* tmp = _head;
+    if(_size == 0){
+        return -1;
+    }
+    Node* curr = _head;
+    while (curr->next != NULL){
+        if(curr->data->GetId() == id){
+            return id;
+        }
 
+        curr = curr->next;
+    }
 }
 
 int Company::FindByName(const string & name, unsigned int position) {
@@ -110,7 +119,7 @@ int Company::Read(istream & input) {
 
 int Company::Write(ostream & output) {
     for (Node* tmp = _head; tmp != nullptr; tmp = tmp->next) {
-        tmp->data->Write(output);
+        tmp->data->ToString();
         output << "\n";
     }
 }

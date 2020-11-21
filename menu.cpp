@@ -7,7 +7,7 @@
 
 
 
-#include <istream>;
+#include <istream>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -61,7 +61,7 @@ int main(){
                 if (employeeCount == 0) {
                     cout << "No employees found." << endl;
                 } else {
-                    cout<<company.ToString() << endl;
+                    company.Write(cout);
                 }
             }
             else if(options ==4)
