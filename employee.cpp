@@ -40,7 +40,7 @@ unsigned int Employee::GetManagerId(){
 }
 string Employee::ToString() const{
     stringstream out;
-    out<< "ID: " << setw(4)<< _id << " Name: "<< left << setw(10)<< _name <<" Salary: " <<right<< setw(10)<< _salary << " Manager ID: " << setw(4)<< _managerId << endl;
+    cout<< "ID: " << setw(4)<< _id << " Name: "<< left << setw(10)<< _name <<" Salary: " <<right<< setw(10)<< _salary << " Manager ID: " << setw(4)<< _managerId;
     return out.str();
 }
 void Employee::Raise(double raise){

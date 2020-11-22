@@ -4,13 +4,11 @@
 
 #include "employee.h"
 #include "company.h"
-
-
-
 #include <istream>
 #include <iostream>
 #include <fstream>
 #include <string>
+
 using std::cerr;
 using std::endl;
 using std:: cout;
@@ -78,7 +76,11 @@ int main(){
                         postition = company.FindByName(employeeName, postition + 1);
                     }while(postition!=-1);
                 }
-                employee.Write(cout);
+                else{
+                    cout << employeeName << " Not found " << endl;
+                }
+              employee.Write(cout);
+
             }
             else if(options ==5)
             {
@@ -91,7 +93,10 @@ int main(){
                     Employee employee(*company.Get(position));
                     cout << employee.ToString() << endl;
 
+                }else{
+                    cout<< id<< " not found." << endl;
                 }
+
 
             }
             else if(options ==6)
@@ -106,7 +111,7 @@ int main(){
                     cout << "Employee with ID " << id<< " has manager: " << endl;//position after amaner:
                     position = company.FindById(employee.GetManagerId());
                     Employee manager = (*company.Get(position));
-                    cout << manager.ToString() << endl;
+                    cout << "       "<< manager.ToString() << endl;
                 }
 
             } else if(options ==7)

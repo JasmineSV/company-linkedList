@@ -126,7 +126,7 @@ int Company::Write(ostream & output) {
         output << "\n";
         count++;
     }
-    return count;
+   // return count;
 }
 
 bool Company::IsFull(){
