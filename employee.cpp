@@ -1,3 +1,11 @@
+/*
+    Title:      Lab 4 – employee-linked-list
+    Purpose:   Read a text file containing the information of the employees of a company, load them into memory and perform some basic human resources operations. Using linked list
+    Author:     Jasmine Salmeron
+    Date:       November 22 2020
+*/
+
+
 #include "employee.h"
 #include <iostream>
 #include <string>
@@ -40,7 +48,7 @@ unsigned int Employee::GetManagerId(){
 }
 string Employee::ToString() const{
     stringstream out;
-    cout<< "ID: " << setw(4)<< _id << " Name: "<< left << setw(10)<< _name <<" Salary: " <<right<< setw(10)<< _salary << " Manager ID: " << setw(4)<< _managerId;
+    out<< "ID: " << setw(4)<< _id << " Name: "<< left << setw(10)<< _name <<" Salary: " <<right<< setw(10)<< _salary << " Manager ID: " << setw(4)<< _managerId << endl;
     return out.str();
 }
 void Employee::Raise(double raise){

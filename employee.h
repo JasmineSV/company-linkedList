@@ -1,3 +1,11 @@
+/*
+    Title:      Lab 4 – employee-linked-list
+    Purpose:   Read a text file containing the information of the employees of a company, load them into memory and perform some basic human resources operations. Using linked list
+    Author:     Jasmine Salmeron
+    Date:       November 22 2020
+*/
+
+
 //
 // Created by 12066 on 11/19/2020.
 //

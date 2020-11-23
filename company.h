@@ -1,3 +1,12 @@
+/*
+    Title:      Lab 4 – employee-linked-list
+    Purpose:   Read a text file containing the information of the employees of a company, load them into memory and perform some basic human resources operations. Using linked list
+    Author:     Jasmine Salmeron
+    Date:       November 22 2020
+*/
+
+
+
 //
 // Created by 12066 on 11/19/2020.
 //
@@ -11,12 +20,12 @@
 class Company {
 private:
 struct Node{
-    Employee* data;
+    Employee* data;//linkedList of employee pointers--> use pointer because employee doesnt have default constructor
     Node* next;
 };
-    Node* _head;
-    unsigned int _size;
-    Company(const Company& company);
+    Node* _head;//pointer to _head
+    unsigned int _size;//initializes _size
+    Company(const Company& company);//passing company by reference --> copy constructor
 
 public:
     Company();
@@ -27,7 +36,7 @@ public:
     int Read(istream&);
     int Write(ostream&);
     bool IsFull();
-    Employee* Get(unsigned int position);//postion
+    Employee* Get(unsigned int position);
     unsigned int GetEmployeeCount();
     string ToString()const;
     ~Company();

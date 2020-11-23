@@ -1,3 +1,12 @@
+/*
+    Title:      Lab 4 – employee-linked-list
+    Purpose:   Read a text file containing the information of the employees of a company, load them into memory and perform some basic human resources operations. Using linked list
+    Author:     Jasmine Salmeron
+    Date:       November 22 2020
+*/
+
+
+
 //
 // Created by 12066 on 11/19/2020.
 //
@@ -24,14 +33,14 @@ bool Company::AddEmployee(unsigned int id, const string & name, double salary, u
     //recieves info of employee
     Employee *employee =  new Employee(id, name, salary,managerId);//trying to create the employee
 
-    Node* neo = new Node;
-    neo->data= new Employee(*employee);//wouldnt Id go here???
+    Node* neo = new Node;//creating a new node
+    neo->data= new Employee(*employee);//setting it
     neo->next = nullptr;
-    if (_size == 0){
-        _head = neo;
-    }else if (neo->data->GetId() < _head->data->GetId()){
-        neo->next = _head;
-        _head = neo;
+    if (_size == 0){// no element inside
+        _head = neo;//element we're adding is the first one
+    }else if (neo->data->GetId() < _head->data->GetId()){//if the incoming employee(element) is less than the first employee (head) you set incoming element to head
+        neo->next = _head;//pointing neo next to head
+        _head = neo;//head is pointing to neo because neo less than the element that was head before
     }else{
         Node* tmp = _head;
         while (tmp->next != nullptr && neo->data->GetId() > tmp->next->data->GetId())
@@ -40,7 +49,7 @@ bool Company::AddEmployee(unsigned int id, const string & name, double salary, u
         tmp->next = neo;
     }
     _size++;
-return true;// does this go here
+return true;
 }
 
 bool Company::AddEmployee(const Employee & employee) {
@@ -62,7 +71,7 @@ bool Company::AddEmployee(const Employee & employee) {
     _size++;
     return true;
 }
-
+//finding the id and setting it
 int Company::FindById(unsigned int id) {
     if(_size == 0){
 
@@ -88,14 +97,13 @@ int Company::FindByName(const string & name, unsigned int position) {
             curr = curr->next;
             pos++;
         }
-        while (curr != NULL){
-            if(curr->data->GetName() == name){
+        while (curr != NULL) {
+            if (curr->data->GetName() == name) {
                 return pos;
             }
             pos++;
             curr = curr->next;
         }
-
     }
     return -1;
 
@@ -120,13 +128,12 @@ int Company::Read(istream & input) {
 }
 
 int Company::Write(ostream & output) {
-    int count;
+    int count = 0;//always initialize to zero so it resets
     for (Node* tmp = _head; tmp != nullptr; tmp = tmp->next) {
-        tmp->data->ToString();
-        output << "\n";
+        output << tmp->data->ToString();
         count++;
     }
-   // return count;
+    return count;
 }
 
 bool Company::IsFull(){

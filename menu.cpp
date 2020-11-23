@@ -1,3 +1,13 @@
+/*
+    Title:      Lab 4 – employee-linked-list
+    Purpose:   Read a text file containing the information of the employees of a company, load them into memory and perform some basic human resources operations. Using linked list
+    Author:     Jasmine Salmeron
+    Date:       November 22 2020
+*/
+
+
+
+
 //
 // Created by 12066 on 11/19/2020.
 //
@@ -16,7 +26,7 @@ using std::cin;
 using std:: ifstream;
 using std::ofstream;
 
-unsigned int menu();
+unsigned int menu();//calling menu
 
 int main(){
         unsigned int options;
@@ -120,28 +130,50 @@ int main(){
                 unsigned int id;
                 double salary;
                 string name;
+                string a;
                 unsigned int managerId;
                 cout<< "Input Employee Information " << endl;
                 cout<< "Employee id: ";
                 cin >> id;
-                cout<<"Employee Name: ";
-                cin >> name;
-                cout << "Employee Salary: ";
-                cin>> salary;
-                cout << "Employee's Boss Id: ";
-                cin >> managerId;
-                input = company.AddEmployee(id,name,salary,managerId);
-                if(input== true)
-                {
-                    cout << "Employee added successfully" <<endl;
+                if(company.FindById(id) != -1){//if it already exists
+                    a = " ";
+                    cout<< "ID already exists" << endl;
+                    cout<< "Do you want to add use another ID: ";
+                    cin>> a;
+                    if(a ==  "yes"){
+                        cout<< "Employee id: ";
+                        cin >> id;
+                        cout<<"Employee Name: ";
+                        cin >> name;
+                        cout << "Employee Salary: ";
+                        cin>> salary;
+                        cout << "Employee's Boss Id: ";
+                        cin >> managerId;
+                        input = company.AddEmployee(id,name,salary,managerId);
+                        if(input == true)
+                        {
+                            cout << "Employee added successfully" <<endl;
+                        }
+                    }
                 }
-                if(company.IsFull() == true){
-                    cout<< "Data is full" << endl;
+                else{//if id is not already on list ask again
+                    cout<<"Employee Name: ";
+                    cin >> name;
+                    cout << "Employee Salary: ";
+                    cin>> salary;
+                    cout << "Employee's Boss Id: ";
+                    cin >> managerId;
+                    input = company.AddEmployee(id,name,salary,managerId);
+                    if(input == true)
+                    {
+                        cout << "Employee added successfully" <<endl;
+                    }
+
                 }
 
 
             }
-            else if(options ==8)
+            else if(options ==8)//never gets full because it's a linked list...
             {
                 if(company.IsFull()== true)
                 {
